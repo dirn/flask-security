@@ -10,7 +10,10 @@
 """
 
 import inspect
-import urlparse
+try:
+    from urllib import parse as urlparse
+except ImportError:
+    import urlparse
 
 import flask_wtf as wtf
 

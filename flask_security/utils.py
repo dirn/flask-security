@@ -83,7 +83,7 @@ def get_hmac(password):
             'not be None when the value of `SECURITY_PASSWORD_HASH` is '
             'set to "%s"' % _security.password_hash)
 
-    h = hmac.new(_security.password_salt, password.encode('utf-8'), hashlib.sha512)
+    h = hmac.new(_security.password_salt.encode('utf-8'), password.encode('utf-8'), hashlib.sha512)
     return base64.b64encode(h.digest())
 
 
@@ -104,7 +104,7 @@ def encrypt_password(password):
 
 
 def md5(data):
-    return hashlib.md5(data).hexdigest()
+    return hashlib.md5(data.encode('utf-8')).hexdigest()
 
 
 def do_flash(message, category=None):
